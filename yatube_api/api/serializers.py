@@ -30,7 +30,6 @@ class GroupSerializer(serializers.ModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
- 
     author = serializers.SlugRelatedField(
         slug_field='username',
         read_only=True
