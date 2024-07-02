@@ -10,16 +10,10 @@ class PostSerializer(serializers.ModelSerializer):
         slug_field='username',
         read_only=True
     )
-    comments = serializers.StringRelatedField(
-        many=True,
-        required=False
-    )
 
     class Meta:
         model = Post
-        fields = (
-            'id', 'author', 'text', 'pub_date', 'image', 'group', 'comments'
-        )
+        fields = '__all__'
 
 
 class GroupSerializer(serializers.ModelSerializer):

@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from .models import Comment, Follow, Group, Post
-
+from posts.models import Comment, Follow, Group, Post
+from posts.constants import list_per_page
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
@@ -14,16 +14,16 @@ class PostAdmin(admin.ModelAdmin):
         'group',
         'count_comments',
     )
-    empty_value_display = '-пусто-'
+    
+    admin.site.empty_value_display
     list_editable = ('group',)
     list_filter = ('pub_date',)
-    list_per_page = 10
+    list_per_page
     search_fields = ('text',)
 
+    @admin.display(short_description = 'Количество комментариев')
     def count_comments(self, object):
         return object.comments.count()
-
-    count_comments.short_description = 'Количество комментариев'
 
 
 @admin.register(Group)
@@ -58,22 +58,8 @@ class CommentAdmin(admin.ModelAdmin):
 
     list_editable = ('author',)
     list_filter = ('author',)
-    list_per_page = 10
+    list_per_page
     search_fields = ('text',)
-
-
-@admin.register(Follow)
-class FollowAdmin(admin.ModelAdmin):
-    list_display = (
-        'pk',
-        'following',
-        'user',
-    )
-
-    list_editable = ('following',)
-    list_filter = ('following',)
-    list_per_page = 10
-    search_fields = ('following',)
 
 
 admin.site.site_title = 'Администрирование Yatube'
