@@ -1,5 +1,5 @@
-list_per_page = 10
+LIST_PER_PAGE = 10
 
 LENGTH_TEXT = 20
 
-max_length=200
+MAX_LENGTH = 200

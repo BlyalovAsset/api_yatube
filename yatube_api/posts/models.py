@@ -1,9 +1,30 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
-from posts.constants import LENGTH_TEXT, max_length
+from posts.constants import LENGTH_TEXT, MAX_LENGTH
 
 User = get_user_model()
+
+
+class Group(models.Model):
+    title = models.CharField(
+        verbose_name='Название сообщества',
+        max_length=MAX_LENGTH,
+        db_index=True
+    )
+    slug = models.SlugField(
+        unique=True,
+        verbose_name='группа'
+    )
+    description = models.TextField(verbose_name='описание')
+
+    class Meta:
+        verbose_name = 'Сообщество'
+        verbose_name_plural = 'Сообщества'
+        ordering = ('title',)
+
+    def __str__(self):
+        return self.text[:LENGTH_TEXT]
 
 
 class Post(models.Model):
@@ -40,27 +61,6 @@ class Post(models.Model):
 
     def __str__(self):
         return self.text[:LENGTH_TEXT]
-
-
-class Group(models.Model):
-    title = models.CharField(
-        max_length,
-        verbose_name='Название сообщества',
-        db_index=True
-    )
-    slug = models.SlugField(
-        unique=True,
-        verbose_name='адрес'
-    )
-    description = models.TextField(verbose_name='описание')
-
-    class Meta:
-        verbose_name = 'Сообщество'
-        verbose_name_plural = 'Сообщества'
-        ordering = ('title',)
-
-    def __str__(self):
-        return self.title
 
 
 class Comment(models.Model):

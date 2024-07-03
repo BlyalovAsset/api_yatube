@@ -1,7 +1,8 @@
 from django.contrib import admin
 
-from posts.models import Comment, Follow, Group, Post
-from posts.constants import list_per_page
+from posts.models import Comment, Group, Post
+from posts.constants import LIST_PER_PAGE
+
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
@@ -14,14 +15,14 @@ class PostAdmin(admin.ModelAdmin):
         'group',
         'count_comments',
     )
-    
+
     admin.site.empty_value_display
     list_editable = ('group',)
     list_filter = ('pub_date',)
-    list_per_page
+    list_per_page = LIST_PER_PAGE
     search_fields = ('text',)
 
-    @admin.display(short_description = 'Количество комментариев')
+    @admin.display(description='Количество комментариев')
     def count_comments(self, object):
         return object.comments.count()
 
@@ -58,7 +59,7 @@ class CommentAdmin(admin.ModelAdmin):
 
     list_editable = ('author',)
     list_filter = ('author',)
-    list_per_page
+    list_per_page = LIST_PER_PAGE
     search_fields = ('text',)
 
 
