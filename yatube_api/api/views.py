@@ -1,11 +1,13 @@
-from django.shortcuts import get_object_or_404
-from rest_framework import permissions, viewsets
-
-from posts.models import Group, Post
 from api.permissions import IsAuthorOrReadOnly
 from api.serializers import (
     CommentSerializer, GroupSerializer, PostSerializer
 )
+
+from django.shortcuts import get_object_or_404
+
+from posts.models import Group, Post
+
+from rest_framework import permissions, viewsets
 
 
 class PostViewSet(viewsets.ModelViewSet):

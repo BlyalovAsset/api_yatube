@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from posts.models import Comment, Group, Post
 from posts.constants import LIST_PER_PAGE
+from posts.models import Comment, Group, Post
 
 
 @admin.register(Post)
