@@ -46,7 +46,7 @@ class Post(models.Model):
         verbose_name='Изображение'
     )
     group = models.ForeignKey(
-        'Group',
+        Group,
         on_delete=models.SET_NULL,
         blank=True,
         null=True,

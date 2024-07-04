@@ -41,10 +41,9 @@ class GroupAdmin(admin.ModelAdmin):
     search_fields = ('title',)
     prepopulated_fields = {'slug': ('title',)}
 
+    @admin.display(description='Количество записей')
     def count_posts(self, object):
         return object.posts.count()
-
-    count_posts.short_description = 'Количество записей'
 
 
 @admin.register(Comment)

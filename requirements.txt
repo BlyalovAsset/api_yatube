@@ -14,7 +14,6 @@ django-templated-mail==1.1.1
 djangorestframework==3.12.4
 djangorestframework-simplejwt==4.7.2
 djoser==2.1.0
-flake8-import-order==0.18.2
 idna==3.7
 iniconfig==1.1.1
 itypes==1.2.0
@@ -22,7 +21,6 @@ Jinja2==3.1.4
 MarkupSafe==2.1.5
 oauthlib==3.2.2
 packaging==21.3
-Pillow==9.3.0
 pluggy==0.13.1
 py==1.11.0
 pycodestyle==2.12.0
